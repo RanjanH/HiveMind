@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="CSS/signup.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2a2be8978e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="Signup">
+            <form action="" class="sign_form">
+                <h1 class="signup_title">Signup</h1>
+                <div class="signup_box">
+                    <i class="form-icon fa-solid fa-building-columns"></i>
+                    <select id="clg" class = "input" name="college">
+                        <option value="volvo">Choose College</option>
+                    </select>
+                    <p class="addClg">Can't find your college's name. <a class="clgAdd" href=".addClg">Register Now</a></p>
+                </div>
+                <div class="email">
+                    <i class="form-icon fa-solid fa-envelope"></i>
+                    <input class = "input" type = "email" name = "email" placeholder = "Email" required>
+                </div>
+                <div class = "password">
+                    <i class="form-icon pass_icon fa-solid fa-lock"></i>
+                    <input class = "input" type = "password" name = "pass" placeholder = "Password" required><br>
+                    <i class="form-icon pass_icon fa-solid fa-lock"></i>
+                    <input class = "input" type = "password" name = "pass2" placeholder = "Confirm Password" required>
+                    <span id="wrong_pass_alert"></span>
+                </div>
+                <div class="confirm_btn">
+                    <button class = "confimr-btn form-btn" type = "submit" >Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

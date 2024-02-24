@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import authenticate from "./methods/login.js";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
@@ -18,9 +20,10 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/login.html');
 })
 
-app.post("/submit", (req, res) => {
-    console.log(req.body);
-    console.log(typeof(req.body));
+app.post("/login", async(req, res) => {
+    var email = req.body.email;
+    var pass = req.body.password;
+    await authenticate(email, pass, res);
 })
 
 app.listen(port, () => {

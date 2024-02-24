@@ -13,7 +13,7 @@
     <div class="login">
         <img src="images\login-bg.jpg" alt="login image" class="login__img">
 
-        <form name="login" class="login__form" action="/submit" method="POST">
+        <form name="login" class="login__form" action="/login" method="POST">
             <h1 class="login__title">Login</h1>
 
             <div class="login__content">
@@ -59,7 +59,7 @@
         const form = document.forms['login'];
 
         form.addEventListener('submit', e => {
-            setTimeout(() => {form.reset();}, 2000)
+            setTimeout(() => {form.reset();}, 1000)
         })
     </script>
 </body>
