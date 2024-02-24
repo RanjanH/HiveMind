@@ -11,14 +11,14 @@
 <body>
     <div id="container">
         <div class="Signup">
-            <form action="" class="sign_form">
+            <form action="/register" method="POST" onsubmit="this.submit(); this.reset(); return false;" class="sign_form">
                 <h1 class="signup_title">Signup</h1>
                 <div class="signup_box">
                     <i class="form-icon fa-solid fa-building-columns"></i>
-                    <select id="clg" class = "input" name="college">
-                        <option value="volvo">Choose College</option>
+                    <select id="clg" class = "input" name="user">
+                        <option class = "option" value="student">Student</option>
+                        <option class = "option" value="Faculty">Faculty</option>
                     </select>
-                    <p class="addClg">Can't find your college's name. <a class="clgAdd" href=".addClg">Register Now</a></p>
                 </div>
                 <div class="email">
                     <i class="form-icon fa-solid fa-envelope"></i>
@@ -26,16 +26,35 @@
                 </div>
                 <div class = "password">
                     <i class="form-icon pass_icon fa-solid fa-lock"></i>
-                    <input class = "input" type = "password" name = "pass" placeholder = "Password" required><br>
+                    <input id="pass" class = "input" type = "password" name = "pass" placeholder = "Password" required><br>
                     <i class="form-icon pass_icon fa-solid fa-lock"></i>
-                    <input class = "input" type = "password" name = "pass2" placeholder = "Confirm Password" required>
-                    <span id="wrong_pass_alert"></span>
+                    <input id="confirm_pass" class = "input" type = "password" name = "pass2" placeholder = "Confirm Password" onkeyup="validate_password()" required>
+                    <br><span id="wrong_pass_alert"></span>
                 </div>
                 <div class="confirm_btn">
-                    <button class = "confimr-btn form-btn" type = "submit" >Confirm</button>
+                    <button id="submitBtn" class = "confimr-btn form-btn" type = "submit">Confirm</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        function validate_password() {
+ 
+            let pass = document.getElementById('pass').value;
+            let confirm_pass = document.getElementById('confirm_pass').value;
+            if (pass != confirm_pass) {
+                document.getElementById('wrong_pass_alert').style.color = 'red';
+                document.getElementById('wrong_pass_alert').innerHTML
+                    = '☒ Use same password';
+                    document.getElementById('submitBtn').disabled = true;
+            } else {
+                document.getElementById('wrong_pass_alert').style.color = 'green';
+                document.getElementById('wrong_pass_alert').innerHTML =
+                    '🗹 Password Matched';
+                document.getElementById('submitBtn').disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>

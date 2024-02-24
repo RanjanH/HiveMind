@@ -15,7 +15,7 @@ body {
 }
 
 #container{
-    background-image: url("../images/login-bg.jpg");
+    background-image: url("../images/login-bg2.jpg");
     background-color: #3c3c3c;
     height: 100vh;
     background-position: center;
@@ -41,6 +41,14 @@ button {
     outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+}
+
 /*-----------------
        Sign Up
 -------------------*/
@@ -50,22 +58,19 @@ button {
     flex-direction: column;
     align-items: center;
     background-color: hsla(0, 0%, 100%, 0.1);
-    height: 500px;
+    height: 480px;
     width: max-content;
     padding: 20px;
     backdrop-filter: blur(30px);
     border-radius: 20px;
-    margin-left: 200px;
+    margin-left: 520px;
+    margin-top: 60px;
+    border: 2px solid white;
 }
 
-.addClg{
-    font-size: 16px;
+.option{
+    color: black;
 }
-
-a{
-    color: white;
-}
-
 
 .form-icon{
     position: absolute;
@@ -75,7 +80,7 @@ a{
 
 .input{
     height: 35px;
-    width: 400px;
+    width: 450px;
     background: none;
     color: #fff;
     font-size: 18px;
@@ -91,12 +96,13 @@ input::-webkit-input-placeholder{
 }
 
 .form-btn{
-    height: 40px;
-    width: 150px;
+    height: 50px;
+    width: 200px;
     background: black;
     border-radius: 10px;
     border-width: 0px;
     color: white;
     font-size: 20px;
     cursor: pointer;
+    margin-top: 15px;
 }

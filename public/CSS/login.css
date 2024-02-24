@@ -65,7 +65,8 @@ input:-webkit-autofill:active{
     padding: 40px 24px;
     border-radius: 16px;
     width: 30%;
-    margin-left: 18%;
+    margin-top: 60px;
+    margin-left: 35.5%;
     backdrop-filter: blur(30px);
 }
 
