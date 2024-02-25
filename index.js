@@ -30,7 +30,7 @@ app.get('/try',(req,res) => {
 app.get('/login', (req, res) => {
     try{
         if(req.cookies.uid){
-            res.redirect('/dashboard');
+            res.redirect('/home');
         } else {
             res.sendFile(__dirname + '/public/login.html');
         }
@@ -51,7 +51,7 @@ app.get("/userDetails", (req, res) => {
     res.sendFile(__dirname + "public/userDetails.html")
 })
 
-app.get("/dashboard", async(req, res) => {
+app.get("/home", async(req, res) => {
     if (req.cookies.uid){
         let result = await db.query("SELECT userno FROM users WHERE uid = $1",[req.cookies.uid]);
         let data = result.rows[0];
@@ -62,7 +62,7 @@ app.get("/dashboard", async(req, res) => {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
         }
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'try'});
+        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'try',cur: "home"});
     } else {
         console.log("huh!!");
         res.redirect("/login");        
@@ -80,7 +80,7 @@ app.get('/create-event', async(req, res) => {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
         }
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'estart'});
+        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'estart',cur: "e-create"});
     } else {
         console.log("huh!!");
         res.redirect("/login");        
@@ -107,7 +107,7 @@ app.post("/login", async(req, res) => {
                 } else {
                     if (isMatched){
                         res.cookie('uid',user.uid);
-                        res.redirect('/dashboard');
+                        res.redirect('/home');
                     } else {
                         res.redirect("/loginError");
                     }
@@ -140,7 +140,7 @@ app.post("/register", async(req,res) => {
 app.post("/details", async(req, res) => {
     await submit(req.body);
     res.cookie('uid',req.body.uid);
-    res.redirect("/dashboard");
+    res.redirect("/home");
 })
 
 app.listen(port, () => {

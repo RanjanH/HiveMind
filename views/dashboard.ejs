@@ -266,7 +266,7 @@ body {
 
 
 <body>
-    <div class="navigation">
+    <div id="nav" class="navigation"  >
         <ul>
             <li>
                 <a href="#">
@@ -274,8 +274,8 @@ body {
                     <span class="acc_name"><%= name %></span>
                 </a>
             </li>
-            <li onclick="light()">
-                <a href="#">
+            <li id="home" onclick="light()">
+                <a href="http://127.0.0.1:8080/home">
                     <span class="icon"><i class="fa-solid fa-house"></i></span>
                     <span class="title">Home</span>
                 </a>
@@ -301,19 +301,19 @@ body {
                 </div>
 
             </li>
-            <li onclick="light()">
+            <li id="calendar" onclick="light()">
                 <a href="#">
                     <span class="icon"><i class="fa-solid fa-calendar-day"></i></span>
                     <span class="title">View Calendar</span>
                 </a>
             </li>
-            <li onclick="light()">
+            <li id="e-create" onclick="light()">
                 <a href="http://127.0.0.1:8080/create-event">
                     <span class="icon"><i class="fa-solid fa-circle-play"></i></span>
                     <span class="title">Create Event</span>
                 </a>
             </li>
-            <li class="" onclick="light()">
+            <li onclick="light()">
                 <a href="#">
                     <span class="icon"><i class="fa-solid fa-handshake"></i></span>
                     <span class="title">Join Event</span>
@@ -366,6 +366,11 @@ body {
             }
             event.currentTarget.classList.add('highlight');
         }
+    </script>
+    <script>
+        var current =  "<%= cur %>";
+        var l_item = document.getElementById(current);
+        l_item.classList.add("highlight");
     </script>
 
 </body>

@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     padding: 0;
@@ -16,6 +16,7 @@ body {
   Form starts here
 --------------------*/
 
+
 .container {
     margin-left: 150px;
     margin-right: 60px;
@@ -24,6 +25,7 @@ body {
     border-radius: 20px;
     max-height: 1092px;
     overflow: hidden;
+
 }
 
 .hero-area {
@@ -39,7 +41,7 @@ form {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     margin-left: 410px;
-    height: 97.5%;
+    height: 98.5%;
 }
 
 h1 {
@@ -137,15 +139,12 @@ label.light {
     border-radius: 100%;
 }
 
-.input_group1 {
-    display: inline-block;
-}
-
 .sname {
     padding-right: 10px;
     float: left;
     width: 50%;
 }
+
 .sname select {
     height: 50px;
 
@@ -178,9 +177,8 @@ label.light {
 }
 
 .col-third:nth-child(3) {
-    margin-right: 49px;
+    margin-right: 30px;
 }
-
 
 @media screen and (min-width: 480px) {
 
