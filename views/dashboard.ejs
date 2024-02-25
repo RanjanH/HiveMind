@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/dd9e022d1f.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="CSS\estart.css">
+    <link rel="stylesheet" href="CSS/home.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
@@ -371,6 +372,15 @@ body {
         var current =  "<%= cur %>";
         var l_item = document.getElementById(current);
         l_item.classList.add("highlight");
+        if(current === 'home'){
+            window.scrollTo(0,0);
+            document.body.style.overflow = 'hidden';
+            var home = document.getElementById("container");
+            home.style.top = '50px';
+            home.style.height = '70vh';
+            home.style.zIndex = -1;
+            
+        }
     </script>
 
 </body>

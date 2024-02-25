@@ -62,7 +62,8 @@ app.get("/home", async(req, res) => {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
         }
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'try',cur: "home"});
+        let eves = await db.query("SELECT * FROM events");
+        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'home',data: eves.rows,cur: "home"});
     } else {
         console.log("huh!!");
         res.redirect("/login");        
@@ -141,6 +142,38 @@ app.post("/details", async(req, res) => {
     await submit(req.body);
     res.cookie('uid',req.body.uid);
     res.redirect("/home");
+})
+
+app.post("/create_event", async(req, res) => {
+    let data = req.body;
+    let whoNo = (data.permission.split(' ')).length;
+    data.who_no = whoNo;
+    data.uid = req.cookies.uid;
+    data.per_no = 0;
+    data.time = data.start_time + '-' + data.end_time;
+    delete data.start_time;
+    delete data.end_time;
+    data.date = data.dd + '/' + data.mm + '/' + data.yyyy;
+    delete data.dd;
+    delete data.mm;
+    delete data.yyyy;
+    try{
+        let result = await db.query("SELECT * FROM events WHERE club = $1",[data.cname]);
+        if(result.rows.length > 0){
+            for(let i = 0; i < result.rows.length; i++){
+                if(result.rows[i].name === data.ename){
+                    res.send("Event has already been created");
+                }
+            }
+        } else{
+            result = await db.query("INSERT INTO events (name,club,date,time,descr,venue,whose,who_no,per_no,uid,link) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)",
+                [data.ename,data.cname,data.date,data.time,data.description,data.start_venue,data.permission,data.who_no,data.per_no,data.uid,data.form]);
+                res.send('<script>alert(Form Submitted Successfully)</script>');
+        }
+    } catch(e) {
+        console.log(e);
+    }
+    
 })
 
 app.listen(port, () => {

@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #e2e2e2;
+    color: #000000;
+}
+
+.container {
+    display: block;
+    margin-left: 190px;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    min-height: 100vh;
+    overflow: scroll;
+    background: #fff;
+}
+
+
+/*------------------
+      Banner
+-------------------*/
+
+.banner {
+    height: 100%;
+    background-image: url(public/images/home-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    padding-left: 0px;
+    padding-top: 0px;
+    display: flex;
+    position: relative;
+}
+
+.banner img {
+    display: none;
+    width: 100%;
+    height: 650px;
+}
+
+.banner-text {
+    text-align: center;
+    position: absolute;
+    top: 33%;
+    left: 21%;
+}
+
+.banner-text h1 {
+    font-size: 50px;
+    color: #000;
+}
+
+.banner-text h1 p {
+    font-size: 60px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/*------------------
+  Join & My Events
+-------------------*/
+
+#joineve {
+    padding: 30px 0;
+}
+
+#myeve {
+    padding: 30px 0;
+    margin-bottom: 60px;
+}
+
+.container2 {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.options div {
+    /* margin-bottom: 30px; */
+    background: #ffffff;
+    box-shadow: 2px 2px 2px 3px rgb(0 0 0 / 20%);
+    padding: 30px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+
+.options div h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.options div a {
+    text-decoration: none;
+    color: #363636;
+    font-size: 14px;
+    display: inline-block;
+    transition: color 0.5s;
+}
+
+.options div:hover {
+    background: #7d00ea;
+    transform: translateY(-10px);
+}
+
+.options div a:hover {
+    color: #ffffff;
+}

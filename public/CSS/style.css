@@ -27,7 +27,8 @@ body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 50px;
     overflow: hidden;
-    transition: 0.5s
+    transition: 0.5s;
+    z-index: 10;
 }
 
 .navigation.active {
