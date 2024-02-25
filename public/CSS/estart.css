@@ -16,7 +16,6 @@ body {
   Form starts here
 --------------------*/
 
-
 .container {
     margin-left: 150px;
     margin-right: 60px;
@@ -146,6 +145,10 @@ label.light {
     padding-right: 10px;
     float: left;
     width: 50%;
+}
+.sname select {
+    height: 50px;
+
 }
 
 .input_group {

@@ -62,6 +62,24 @@ app.get("/dashboard", async(req, res) => {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
         }
+        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'try'});
+    } else {
+        console.log("huh!!");
+        res.redirect("/login");        
+    }
+})
+
+app.get('/create-event', async(req, res) => {
+    if (req.cookies.uid){
+        let result = await db.query("SELECT userno FROM users WHERE uid = $1",[req.cookies.uid]);
+        let data = result.rows[0];
+        if (data.userno === 1){
+            result = await db.query("SELECT name FROM student_details WHERE uid = $1",[req.cookies.uid]);
+            data = result.rows[0];
+        } else {
+            result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
+            data = result.rows[0];
+        }
         res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'estart'});
     } else {
         console.log("huh!!");

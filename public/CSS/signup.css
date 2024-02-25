@@ -51,7 +51,7 @@ input:-webkit-autofill:active{
     flex-direction: column;
     align-items: center;
     background-color: hsla(0, 0%, 100%, 0.1);
-    height: 480px;
+    height: 380px;
     width: max-content;
     padding: 20px;
     backdrop-filter: blur(30px);

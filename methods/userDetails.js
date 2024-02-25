@@ -11,11 +11,6 @@ fs.readFile("methods/users.json", function(err, data) {
 
 async function submit(data){
     try{
-        if (users.user === "student"){
-            users.user = 1;
-        } else {
-            users.user = 2;
-        }
         let result = await db.query("INSERT INTO users (uid,email,hash,userno) VALUES ($1, $2, $3, $4)",
             [data.uid, users.email, users.pass, users.user]);
             //console.log(result);

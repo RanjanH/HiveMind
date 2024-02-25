@@ -34,6 +34,7 @@ async function register(data){
                             console.log("Demo checking : ",isMatched);
                         }
                     })
+                    data.user = 1;
                     writeJSON(data);
                     return true;
                 }
