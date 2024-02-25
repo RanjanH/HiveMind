@@ -62,12 +62,17 @@ app.get("/home", async(req, res) => {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
         }
-        let eves = await db.query("SELECT * FROM events");
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'home',data: eves.rows,cur: "home"});
+        let eves = await db.query("SELECT * FROM events WHERE who_no = per_no");
+        let myeves = await db.query("SELECT * FROM events WHERE uid = $1",[req.cookies.uid]);
+        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'home',data: eves.rows,mydata: myeves.rows,cur: "home"});
     } else {
         console.log("huh!!");
         res.redirect("/login");        
     }
+})
+
+app.get("/public/images/homebg.jpg", (req,res) => {
+    res.sendFile(__dirname + "/public/images/homebg.jpg");
 })
 
 app.get('/create-event', async(req, res) => {

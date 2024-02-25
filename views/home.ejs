@@ -5,7 +5,7 @@
     ------------------->
 
     <div class="banner">
-        <img src="images\home-bg.jpg">
+        <img src="public/images/homebg.jpg">
         <div class="banner-text">
             <h1>One Place to manage all your <p>Events</p>
             </h1>
@@ -15,12 +15,13 @@
     <!----------------
       Join Events
     ------------------>
-
+    
     <div id="joineve">
         <div class="container2">
             <h1 class="sub-title">Join Current Events</h1>
-            <% var k = 0; 
-            for(let i = 0; i < (data.length / 3); i++){ %>
+            <% if(data.length > 0) {
+                var k = 0;
+                for(let i = 0; i < (data.length / 3); i++){ %>
                 <div class="options">
                     <% for(let j = 0; j < Math.min(data.length,3); j++){%>
                             <div>
@@ -32,7 +33,9 @@
                             </div>
                     <% k++;} %>
                 </div>
-            <% } %>
+            <% } } else {%>
+                <h2 style="text-align: center;">No Upcoming Events</h2>
+                <% } %>
         </div>
     </div>
 
@@ -40,43 +43,26 @@
         My Events
     ------------------>
 
-
+    <% if(mydata.length > 0) {
+                var k = 0; %>
     <div id="myeve">
         <div class="container2">
             <h1 class="sub-title">My Events</h1>
+            <% for(let i = 0; i < (mydata.length / 3); i++){ %>
             <div class="options">
+                <% for(let j = 0; j < Math.min(mydata.length,3); j++){%>
                 <div>
-                    <a href="#">
-
-                        <h2>Event Name</h2>
-                        <p>date & time</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos aspernatur
-                            optio
-                            vero, debitis dolorem aliquam! Minus quam eos repellendus?</p>
+                    <a href="<%= link = mydata[k].link %>">
+                        <h2><%= name = mydata[k].name%></h2>
+                        <h4><%= dateTime = 'Date : ' + mydata[k].date + ' & Time : ' + mydata[k].time%></h4>
+                        <p><%= desc = mydata[k].descr %></p>
                     </a>
                 </div>
-                <div>
-                    <a href="#">
-
-                        <h2>Event Name</h2>
-                        <p>date & time</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos aspernatur
-                            optio
-                            vero, debitis dolorem aliquam! Minus quam eos repellendus?</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-
-                        <h2>Event Name</h2>
-                        <p>date & time</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos aspernatur
-                            optio
-                            vero, debitis dolorem aliquam! Minus quam eos repellendus?</p>
-                    </a>
-                </div>
+                <% k++;} %>
             </div>
+            <% } %>
         </div>
     </div>
+    <% } %>
 
 </div>
