@@ -7,7 +7,6 @@
     margin: 0;
 }
 
-
 body {
     font-size: 16px;
     color: rgb(255, 255, 255);
@@ -27,13 +26,6 @@ body {
     justify-content: center;
 }
 
-input,
-button {
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    outline: none;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -43,10 +35,10 @@ input:-webkit-autofill:active{
 }
 
 /*-----------------
-       Sign Up
+       Form
 -------------------*/
 
-.Signup{
+.details{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,12 +57,6 @@ input:-webkit-autofill:active{
     color: black;
 }
 
-.form-icon{
-    position: absolute;
-    padding: 28px 0px 0px 10px;
-    font-size: 18px;
-}
-
 .input{
     height: 35px;
     width: 450px;
@@ -78,7 +64,7 @@ input:-webkit-autofill:active{
     color: #fff;
     font-size: 18px;
     outline: none;
-    padding-left: 35px;
+    padding-left: 10px;
     border-width: 0px 0px 1px 0px;
     border-color: #fff;
     margin: 20px 0px;
@@ -86,6 +72,18 @@ input:-webkit-autofill:active{
 
 input::-webkit-input-placeholder{
     color: #fff;
+}
+
+#year, #branch{
+    width: 200px;
+}
+
+#year{
+    margin-right: 25px;
+}
+
+#branch{
+    margin-left: 25px;
 }
 
 .form-btn{

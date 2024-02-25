@@ -75,6 +75,7 @@ body {
     color: #000;
 }
 
+
 /*-------------------
     Account tab
 --------------------*/
@@ -131,6 +132,15 @@ body {
 
 .navigation ul li a .title i {
     align-items: right;
+}
+
+.highlight{
+    background: #fff;
+    color: #000;
+}
+
+.highlight a span i{
+    color: #000;
 }
 
 /*-------------------

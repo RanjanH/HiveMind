@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+body{
+    background-image: url("../images/login-error.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.btn{
+    position: absolute;
+    margin-left: 850px;
+    margin-top: 500px;
+}
+
+.login{
+    font-family: "Kalam", cursive;
+    font-size: 28px;
+    font-weight: 400;
+    cursor: pointer;
+    font-style: normal;
+    width: 300px;
+    height: 60px;
+    background-color: #0047AB;
+    color: #fff;
+    outline: none;
+    border-radius: 20px;
+}

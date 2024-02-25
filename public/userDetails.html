@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user Details</title>
+    <link rel="stylesheet" href="CSS/userDetails.css">
+</head>
+<body>
+    <div id="container">
+        <div class="details">
+            <form action="/details" method="POST" onsubmit="this.submit(); this.reset(); return false;" class="sign_form">
+                <h1 class="title">User Details</h1>
+                <div class="name">
+                    <input class = "input" type = "text" name = "name" placeholder = "Full Name" required>
+                </div>
+                <div class="uname">
+                    <input class = "input" type = "text" name = "uname" placeholder = "User Name" required>
+                </div>
+                <div class="details_box">
+                    <i class="form-icon fa-solid fa-building-columns"></i>
+                    <select id="year" class = "input" name="year">
+                        <option class = "option" value="null">Year</option>
+                        <option class = "option" value="1">1</option>
+                        <option class = "option" value="2">2</option>
+                        <option class = "option" value="3">3</option>
+                        <option class = "option" value="4">4</option>
+                    </select>
+                    <input id="branch" class = "input" type = "text" name = "branch" placeholder = "Branch" required>
+                </div>
+                <div class="email">
+                    <i class="form-icon fa-solid fa-envelope"></i>
+                    <input class = "input" type = "text" name = "uid" placeholder = "Student ID" required>
+                </div>
+                <div class="confirm_btn">
+                    <button id="submitBtn" class = "confimr-btn form-btn" type = "submit">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

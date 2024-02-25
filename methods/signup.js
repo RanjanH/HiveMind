@@ -1,30 +1,46 @@
 import db from "./database.js";
 import bcrypt from "bcrypt";
-import crypto from "crypto";
+import fs from "fs";
+
+function writeJSON(user){
+    fs.writeFile(
+        "methods/users.json",
+        JSON.stringify(user),
+        err => {
+            if (err) throw err;
+            console.log("Done writing");
+        });
+}
 
 const saltRounds = 10;
 
-async function register(email,pass,res){
+async function register(data){
     try{
-        const result = await db.query("SELECT * FROM users WHERE email = $1",[email]);
+        const result = await db.query("SELECT * FROM users WHERE email = $1",[data.email]);
 
         if (result.rows.length > 0){
-            res.send("This email is already linked with another account");
+            //res.send("This email is already linked with another account");
         } else {
-            const uid = crypto.randomUUID();
-            bcrypt.hash(pass, saltRounds, async(e, hash) => {
+            bcrypt.hash(data.pass, saltRounds, async(e, hash) => {
                 if (e){
-                    console.log("Error while hashing :", e);
+                    console.log("Error :",e);
                 } else {
-                    const result = db.query("INSERT INTO users (uid,email, password) VALUES ($1, $2, $3)",
-                    [uid,email,hash]);
-                    console.log(result);
-                    res.send("Registered Successfully");
+                    let temp = data.pass;
+                    data.pass = hash;
+                    bcrypt.compare(temp, hash, (e, isMatched) => {
+                        if(e){
+                            console.log("Error : ",e);
+                        } else {
+                            console.log("Demo checking : ",isMatched);
+                        }
+                    })
+                    writeJSON(data);
+                    return true;
                 }
             })
         }
     } catch(e) {
-        console.log(e);
+        console.log("Error : ",e);
     }
 }
 

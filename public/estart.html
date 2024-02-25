@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Event</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="CSS/estart.css">
+    <script src="https://kit.fontawesome.com/2a2be8978e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--------------------
+           Form
+    -------------------->
+
+    <div class="container">
+        <div class="hero-area">
+            <div class="row">
+
+                <form action="estart.html" method="post">
+                    <br>
+                    <h1>Create Event</h1><br><br>
+
+                    <fieldset>
+                        <legend><span class="number">1</span> &nbsp;&nbsp;Event Basic Info</legend><br>
+                        <div class="sname"><label>Event Name:</label>
+                            <input type="text" id="ename" name="ename" placeholder=" ">
+                        </div>
+                        <div class="sname"><label>Club Name:</label>
+                            <input type="text" id="cname" name="cname" placeholder=" ">
+                        </div>
+                        <div class="input_group">
+                            <div class="col-third"><label>Date of Event:</label><input name="dd" type="number"
+                                    placeholder="DD">
+                            </div>
+                            <div class="col-third"><label>&nbsp;</label><input name="mm" type="number" placeholder="MM">
+                            </div>
+                            <div class="col-third"><label>&nbsp;</label><input name="yyyy" type="number"
+                                    placeholder="YYYY">
+                            </div>
+                            <div class="col-third"><label>Time of Event:</label><select name="start_time">
+                                    <option value="Start">Start</option>
+                                    <option value="9:00am">9:00am</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                    <option value="4:00pm">4:00pm</option>
+                                </select>
+                            </div>
+                            <div class="col-third"><label>&nbsp;</label><select name="end_time">
+                                    <option value="End">End</option>
+                                    <option value="10:00am">10:00am</option>
+                                    <option value="11:00am">11:00am</option>
+                                    <option value="12:00pm">12:00pm</option>
+                                    <option value="1:00pm">1:00pm</option>
+                                    <option value="2:00pm">2:00pm</option>
+                                    <option value="3:00pm">3:00pm</option>
+                                    <option value="4:00pm">4:00pm</option>
+                                    <option value="5:00pm">5:00pm</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label>Description:</label>
+                        <textarea name="description"></textarea>
+
+                        <div class="col-third new">
+                            <label>Venue of Event:</label>
+                            <select name="start_venue">
+                                <option value="Choose_your_venue">Choose your venue</option>
+                                <option value="Seminar_hall_1">Seminar hall 1</option>
+                                <option value="Seminar_hall_2">Seminar hall 2</option>
+                                <option value="Lab 1">Lab 1</option>
+                                <option value="Lab 2">Lab 2</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend><span class="number">2</span>&nbsp;&nbsp; Event Requirements</legend><br>
+                        <label>Permissions:</label>
+                        <textarea name="permission"
+                            placeholder="Tag facaulties (@facultyUID) to send a permission request"></textarea>
+                        <br>
+                        <label>Cover Image:</label>
+                        <input class="btn2" type="file" name="coverimg" accept="image/png, image/jpeg">
+                    </fieldset>
+                    <br><br>
+                    <button type="submit">Submit</button>
+                    <br><br><br>
+                </form>
+
+            </div>
+        </div>
+        <img src="images\form-pic.jpg">
+    </div>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <script>
+        const dropdownBtn = document.getElementById("ddmenu");
+        const dropdownMenu = document.getElementById("dropdown");
+        const toggleArrow = document.getElementById("arrow");
+        const toggleDropdown = function () {
+            dropdownMenu.classList.toggle("show");
+            toggleArrow.classList.toggle("arrow");
+        };
+        dropdownBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+    </script>
+    <script>
+        let navigation = document.querySelector('.navigation');
+        let toggle = document.querySelector('.toggle');
+        toggle.onclick = function () {
+            navigation.classList.toggle('active')
+        }
+    </script>
+</body>
+
+</html>
