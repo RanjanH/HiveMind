@@ -7,7 +7,7 @@ try{
         user: "postgres",
         host: "localhost",
         database: "hivemind",
-        password: "Alok@1234"
+        password: ""
     })
 
     db.connect();
