@@ -9,3 +9,6 @@ First run this command in your project terminal to download the dependencies.
 ### ` node index.js `
 After the download has been completed run this command to locally host the server in development mode.
 Open [http://localhost:8080](http://http://127.0.0.1:8080/) in your browser to view it.
+
+The database file is in the methods folder which can be used to import the database schema in PostgreSQL.
+After that add your password in the `database.js` in Methods folder for the database to be connected.
