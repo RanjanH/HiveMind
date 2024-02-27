@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Dashboard</title>
-    <link rel="stylesheet" src="../public/CSS/style.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/dd9e022d1f.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="..\public\CSS\style.css">
+    <% if (cur === 'e-create') {%>
     <link rel="stylesheet" href="CSS\estart.css">
+    <% } else if (cur === 'home'){ %>
     <link rel="stylesheet" href="CSS/home.css">
+    <% } else if (cur === 'calendar'){ %>
+        <link rel="stylesheet" href="CSS/calender.css">
+    <% } %>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2a2be8978e.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
@@ -268,7 +273,7 @@ body {
 
 
 <body>
-    <div id="nav" class="navigation"  >
+    <div class="navigation">
         <ul>
             <li>
                 <a href="#">
@@ -282,29 +287,8 @@ body {
                     <span class="title">Home</span>
                 </a>
             </li>
-            <li class="club">
-                <div class="ddmenu" id="ddmenu">
-
-                    <a href="#">
-                        <span class="icon"><i class="fa-solid fa-users"></i></span>
-                        <span class="title">Clubs <i class="bx bx-chevron-down" id="arrow"></i></span>
-                    </a>
-
-                </div>
-                <div class="dropdown" id="dropdown">
-                    <a href="#myclubs">
-                        <i class="fa-solid fa-person-shelter"></i>
-                        My Clubs
-                    </a>
-                    <a href="#joinclubs">
-                        <i class="fa-solid fa-list"></i>
-                        Join Clubs
-                    </a>
-                </div>
-
-            </li>
             <li id="calendar" onclick="light()">
-                <a href="#">
+                <a href="http://127.0.0.1:8080/calendar">
                     <span class="icon"><i class="fa-solid fa-calendar-day"></i></span>
                     <span class="title">View Calendar</span>
                 </a>
@@ -315,10 +299,10 @@ body {
                     <span class="title">Create Event</span>
                 </a>
             </li>
-            <li onclick="light()">
-                <a href="#">
-                    <span class="icon"><i class="fa-solid fa-handshake"></i></span>
-                    <span class="title">Join Event</span>
+            <li id="approval" onclick="light()">
+                <a href="http://127.0.0.1:8080/approval">
+                    <span class="icon"><i class="fa-regular fa-thumbs-up"></i></span>
+                    <span class="title">Approvals</span>
                 </a>
             </li>
             <li class="logout">
@@ -351,38 +335,32 @@ body {
     <script>
         let navigation = document.querySelector('.navigation');
         let toggle = document.querySelector('.toggle');
-        toggle.addEventListener('click', () => {
-            if(toggle.classList.contains('active')){
-                toggle.classList.remove('active');
-            }
-        })
         toggle.onclick = function () {
             navigation.classList.toggle('active');
         }
     </script>
     <script>
         let lis = document.getElementsByTagName('li');
-        function light(){
-            for(li of lis){
+        function light() {
+            for (li of lis) {
                 li.classList.remove('highlight');
             }
             event.currentTarget.classList.add('highlight');
         }
     </script>
-    <script>
-        var current =  "<%= cur %>";
-        var l_item = document.getElementById(current);
-        l_item.classList.add("highlight");
-        if(current === 'home'){
-            window.scrollTo(0,0);
-            document.body.style.overflow = 'hidden';
-            var home = document.getElementById("container");
-            home.style.top = '50px';
-            home.style.height = '70vh';
-            home.style.zIndex = -1;
-        }
-    </script>
-
+        <script>
+            var current =  "<%= cur %>";
+            var l_item = document.getElementById(current);
+            l_item.classList.add("highlight");
+            if(current === 'home'){
+                window.scrollTo(0,0);
+                document.body.style.overflow = 'hidden';
+                var home = document.getElementById("container");
+                home.style.top = '50px';
+                home.style.height = '70vh';
+                home.style.zIndex = -1;
+            }
+        </script>
 </body>
 
 </html>

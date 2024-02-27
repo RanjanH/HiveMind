@@ -55,18 +55,20 @@ app.get("/home", async(req, res) => {
     if (req.cookies.uid){
         let result = await db.query("SELECT userno FROM users WHERE uid = $1",[req.cookies.uid]);
         let data = result.rows[0];
+        let start;
         if (data.userno === 1){
             result = await db.query("SELECT name FROM student_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
+            start = "stu_";
         } else {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
+            start = "fac_";
         }
         let eves = await db.query("SELECT * FROM events WHERE who_no = per_no");
         let myeves = await db.query("SELECT * FROM events WHERE uid = $1",[req.cookies.uid]);
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'home',data: eves.rows,mydata: myeves.rows,cur: "home"});
+        res.render(start + "dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'home',data: eves.rows,mydata: myeves.rows,cur: "home"});
     } else {
-        console.log("huh!!");
         res.redirect("/login");        
     }
 })
@@ -79,23 +81,70 @@ app.get('/create-event', async(req, res) => {
     if (req.cookies.uid){
         let result = await db.query("SELECT userno FROM users WHERE uid = $1",[req.cookies.uid]);
         let data = result.rows[0];
+        let start;
         if (data.userno === 1){
             result = await db.query("SELECT name FROM student_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
+            start = "stu_";
         } else {
             result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
             data = result.rows[0];
+            start = "fac_";
         }
-        res.render("dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'estart',cur: "e-create"});
+        res.render(start + "dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'estart',cur: "e-create"});
     } else {
         console.log("huh!!");
         res.redirect("/login");        
     }
 })
 
+app.get('/calendar', async(req, res) => {
+    if (req.cookies.uid){
+        let result = await db.query("SELECT userno FROM users WHERE uid = $1",[req.cookies.uid]);
+        let data = result.rows[0];
+        let start;
+        if (data.userno === 1){
+            result = await db.query("SELECT name FROM student_details WHERE uid = $1",[req.cookies.uid]);
+            data = result.rows[0];
+            start = "stu_";
+        } else {
+            result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
+            data = result.rows[0];
+            start = "fac_";
+        }
+        let eves = await db.query("SELECT * FROM events");
+        res.render(start + "dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'calendar',data: eves.rows,cur: "calendar"});
+    } else {
+        res.redirect("/login");        
+    }
+})
+
+app.get('/approval', async(req,res) => {
+    if(req.cookies.uid){
+        let result = await db.query("SELECT name FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
+        let data = result.rows[0];
+        let uname = await db.query("SELECT uname FROM faculty_details WHERE uid = $1",[req.cookies.uid]);
+        let utemp = uname.rows[0].uname;
+        let eves = await db.query("SELECT * FROM events");
+        let eve = eves.rows;
+        let mydata = [];
+        for(let i=0; i < eve.length; i++){
+            let temp = eve[i].whose;
+            if ((temp).includes(utemp)){
+                mydata.push(eve[i]);
+            }
+        }
+        res.render("fac_dashboard.ejs",{name:data.name.slice(0,1).toUpperCase() + data.name.slice(1),dir: 'approval',data: mydata,cur: "approval"});
+    }
+})
+
 app.get('/logout', (req, res) => {
     res.clearCookie('uid');
     res.redirect('/login');
+})
+
+app.post('/approval', (req,res) => {
+    console.log(req.body);
 })
 
 app.post("/login", async(req, res) => {

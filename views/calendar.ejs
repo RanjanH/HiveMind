@@ -1,0 +1,32 @@
+<div class="container6">
+
+    <!--------------------
+      heading banner
+    ------------------->
+
+    <div class="banner2">
+        <img src="images\Calender.jpg">
+    </div>
+
+    <!----------------
+      Calender Events
+    ------------------>
+    
+    <div id="caleve">
+        <div class="container7">
+            <h1 class="header1">Booked Venues</h1>
+            <div class="Eventdates">
+                <% for(let i = 0; i < data.length; i++){%>
+                <div>
+                    <a href="#">
+
+                        <h2><%= name = data[i].venue%></h2>
+                        <p>Event : <%= ename = data[i].name%></p>
+                        <p><%= dateTime = 'Date : ' + data[i].date + ' & Time : ' + data[i].time%></p>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

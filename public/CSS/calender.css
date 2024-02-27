@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #e2e2e2;
+    color: #000000;
+}
+
+.container6 {
+    display: block;
+    margin-left: 190px;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #fff;
+
+}
+
+
+/*------------------
+      banner2
+-------------------*/
+
+.banner2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    padding-left: 0px;
+    padding-top: 0px;
+    display: flex;
+    position: relative;
+}
+
+.banner2 img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*------------------
+  Calender Events
+-------------------*/
+
+#caleve {
+    padding: 30px 0;
+}
+
+.container7 {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.Eventdates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.Eventdates div {
+    /* margin-bottom: 30px; */
+    background: #ffffff;
+    box-shadow: 2px 2px 2px 3px rgb(0 0 0 / 20%);
+    padding: 30px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+
+.Eventdates div h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.Eventdates div a {
+    text-decoration: none;
+    color: #363636;
+    font-size: 14px;
+    display: inline-block;
+    transition: color 0.5s;
+}
+
+.Eventdates div:hover {
+    background: #240089;
+    transform: translateY(-10px);
+}
+
+.Eventdates div a:hover {
+    color: #ffffff;
+}
